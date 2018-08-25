@@ -1,0 +1,70 @@
+begin schema data
+   name           : AppLocalConfig_SettingDisplay
+   data-mapping   : <?xml version="1.0" encoding="UTF-8"?><arDocMapping xmlns="urn:remedy:schemas:ars" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+   data-mapping   :     <element name="entryList">        <formMapping>            <form foreignKeyId="1" formName="AppLocalConfig_SettingDisplay" mapType="embedded" prim
+   data-mapping   : aryKeyId="1"/>            <element name="entryItem">                <element dataType="string" name="f1_Request_ID">                    <fieldMapping
+   data-mapping   :  arFieldId="1"/>                </element>                <element dataType="string" name="f2_Submitter">                    <fieldMapping arFieldId=
+   data-mapping   : "2"/>                </element>                <element dataType="dateTime" name="f3_Create_Date">                    <fieldMapping arFieldId="3"/> 
+   data-mapping   :                </element>                <element dataType="string" name="f4_Assigned_To">                    <fieldMapping arFieldId="4"/>          
+   data-mapping   :       </element>                <element dataType="string" name="f5_Last_Modified_By">                    <fieldMapping arFieldId="5"/>              
+   data-mapping   :   </element>                <element dataType="dateTime" name="f6_Modified_Date">                    <fieldMapping arFieldId="6"/>                </e
+   data-mapping   : lement>                <element dataType="string" name="f7_Status">                    <fieldMapping arFieldId="7"/>                </element>      
+   data-mapping   :           <element dataType="string" name="f8_Short_Description">                    <fieldMapping arFieldId="8"/>                </element>         
+   data-mapping   :        <element dataType="string" name="f15_Status_History">                    <fieldMapping arFieldId="15"/>                </element>             
+   data-mapping   :    <element dataType="string" name="f16_Notifier_Listening">                    <fieldMapping arFieldId="16"/>                </element>             
+   data-mapping   :    <element dataType="string" name="f112_Assignee_Group">                    <fieldMapping arFieldId="112"/>                </element>               
+   data-mapping   :  <element dataType="string" name="f160_Locale">                    <fieldMapping arFieldId="160"/>                </element>                <element 
+   data-mapping   : dataType="string" name="f17__SettingDisplayGUID">                    <fieldMapping arFieldId="179"/>                </element>                <elemen
+   data-mapping   : t dataType="string" name="f37__Record_ID">                    <fieldMapping arFieldId="379"/>                </element>                <element dataT
+   data-mapping   : ype="string" name="f3200_Component_Name">                    <fieldMapping arFieldId="3200"/>                </element>                <element dataT
+   data-mapping   : ype="string" name="f3204_Setting_Name">                    <fieldMapping arFieldId="3204"/>                </element>                <element dataTyp
+   data-mapping   : e="string" name="f3260_FieldGrouping">                    <fieldMapping arFieldId="3260"/>                </element>                <element dataType
+   data-mapping   : ="string" name="f3266_SettingLabel">                    <fieldMapping arFieldId="3266"/>                </element>                <element dataType="
+   data-mapping   : string" name="f3267_Setting_Description">                    <fieldMapping arFieldId="3267"/>                </element>                <element dataT
+   data-mapping   : ype="string" name="f60_8__ParentAssigneeGroup">                    <fieldMapping arFieldId="60989"/>                </element>                <elemen
+   data-mapping   : t dataType="string" name="f61001_Application">                    <fieldMapping arFieldId="61001"/>                </element>            </element> 
+   data-mapping   :        </formMapping>    </element></arDocMapping>
+   data           : <?xml version="1.0" encoding="UTF-8"?><entryList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">   
+   data           :  <entryItem>        <f1_Request_ID>000000000010098</f1_Request_ID>        <f2_Submitter>ARSERVER</f2_Submitter>        <f3_Create_Date>2018-08-19T08:
+   data           : 52:51+00:00</f3_Create_Date>        <f4_Assigned_To/>        <f5_Last_Modified_By>ARSERVER</f5_Last_Modified_By>        <f6_Modified_Date>2018-08-19T
+   data           : 08:52:51+00:00</f6_Modified_Date>        <f7_Status>Active</f7_Status>        <f8_Short_Description>fileName</f8_Short_Description>        <f15_Statu
+   data           : s_History>2018-08-19T08:52:57+00:00ARSERVER</f15_Status_History>        <f16_Notifier_Listening>Not Listening</f16_Notifier_Listening>        <f112_
+   data           : Assignee_Group/>        <f160_Locale>en</f160_Locale>        <f17__SettingDisplayGUID>AGGADG1AANVNMAP3P0AJP2S3Z56XS3</f17__SettingDisplayGUID>       
+   data           :  <f37__Record_ID>AGGADG1AANVNMAP3P0AJP2S3Z56XS3</f37__Record_ID>        <f3200_Component_Name>Logger Configuration</f3200_Component_Name>        <f320
+   data           : 4_Setting_Name>fileName</f3204_Setting_Name>        <f3260_FieldGrouping>Logger Configuration Settings</f3260_FieldGrouping>        <f3266_SettingLabe
+   data           : l>fileName</f3266_SettingLabel>        <f3267_Setting_Description/>        <f60_8__ParentAssigneeGroup/>        <f61001_Application>fr.tsodev.assetmg
+   data           : mt</f61001_Application>    </entryItem>    <entryItem>        <f1_Request_ID>000000000010099</f1_Request_ID>        <f2_Submitter>ARSERVER</f2_Submi
+   data           : tter>        <f3_Create_Date>2018-08-19T08:52:51+00:00</f3_Create_Date>        <f4_Assigned_To/>        <f5_Last_Modified_By>ARSERVER</f5_Last_Modifi
+   data           : ed_By>        <f6_Modified_Date>2018-08-19T08:52:51+00:00</f6_Modified_Date>        <f7_Status>Active</f7_Status>        <f8_Short_Description>level<
+   data           : /f8_Short_Description>        <f15_Status_History>2018-08-19T08:52:57+00:00ARSERVER</f15_Status_History>        <f16_Notifier_Listening>Not Listenin
+   data           : g</f16_Notifier_Listening>        <f112_Assignee_Group/>        <f160_Locale>en</f160_Locale>        <f17__SettingDisplayGUID>AGGADG1AANVNMAP3P0AJP2S
+   data           : 3Z56XSL</f17__SettingDisplayGUID>        <f37__Record_ID>AGGADG1AANVNMAP3P0AJP2S3Z56XSL</f37__Record_ID>        <f3200_Component_Name>Logger Configura
+   data           : tion</f3200_Component_Name>        <f3204_Setting_Name>level</f3204_Setting_Name>        <f3260_FieldGrouping>Logger Configuration Settings</f3260_Fie
+   data           : ldGrouping>        <f3266_SettingLabel>level</f3266_SettingLabel>        <f3267_Setting_Description/>        <f60_8__ParentAssigneeGroup/>        <f
+   data           : 61001_Application>fr.tsodev.assetmgmt</f61001_Application>    </entryItem>    <entryItem>        <f1_Request_ID>000000000010104</f1_Request_ID>     
+   data           :    <f2_Submitter>Allen</f2_Submitter>        <f3_Create_Date>2018-08-19T10:12:28+00:00</f3_Create_Date>        <f4_Assigned_To/>        <f5_Last_Modi
+   data           : fied_By>Allen</f5_Last_Modified_By>        <f6_Modified_Date>2018-08-19T10:12:28+00:00</f6_Modified_Date>        <f7_Status>Active</f7_Status>       
+   data           :  <f8_Short_Description>Password</f8_Short_Description>        <f15_Status_History>2018-08-19T10:12:31+00:00Allen</f15_Status_History>        <f16_No
+   data           : tifier_Listening>Not Listening</f16_Notifier_Listening>        <f112_Assignee_Group/>        <f160_Locale>en</f160_Locale>        <f17__SettingDispla
+   data           : yGUID>AGGADG1AANVNMAP3P3OVP2S7OBNSP9</f17__SettingDisplayGUID>        <f37__Record_ID>AGGADG1AANVNMAP3P3OVP2S7OBNSP9</f37__Record_ID>        <f3200_Co
+   data           : mponent_Name>Remedy Server</f3200_Component_Name>        <f3204_Setting_Name>password</f3204_Setting_Name>        <f3260_FieldGrouping>General</f3260_
+   data           : FieldGrouping>        <f3266_SettingLabel>Password</f3266_SettingLabel>        <f3267_Setting_Description/>        <f60_8__ParentAssigneeGroup/>    
+   data           :     <f61001_Application>fr.tsodev.assetmgmt</f61001_Application>    </entryItem>    <entryItem>        <f1_Request_ID>000000000010100</f1_Request_ID>
+   data           :         <f2_Submitter>Allen</f2_Submitter>        <f3_Create_Date>2018-08-19T10:12:28+00:00</f3_Create_Date>        <f4_Assigned_To/>        <f5_Las
+   data           : t_Modified_By>Allen</f5_Last_Modified_By>        <f6_Modified_Date>2018-08-19T10:12:28+00:00</f6_Modified_Date>        <f7_Status>Active</f7_Status> 
+   data           :        <f8_Short_Description>url</f8_Short_Description>        <f15_Status_History>2018-08-19T10:12:30+00:00Allen</f15_Status_History>        <f16_N
+   data           : otifier_Listening>Not Listening</f16_Notifier_Listening>        <f112_Assignee_Group/>        <f160_Locale>en</f160_Locale>        <f17__SettingDispl
+   data           : ayGUID>AGGADG1AANVNMAP3P3OUP2S7OANSMZ</f17__SettingDisplayGUID>        <f37__Record_ID>AGGADG1AANVNMAP3P3OUP2S7OANSMZ</f37__Record_ID>        <f3200_C
+   data           : omponent_Name>Remedy Server</f3200_Component_Name>        <f3204_Setting_Name>url</f3204_Setting_Name>        <f3260_FieldGrouping>General</f3260_Fiel
+   data           : dGrouping>        <f3266_SettingLabel>url</f3266_SettingLabel>        <f3267_Setting_Description/>        <f60_8__ParentAssigneeGroup/>        <f610
+   data           : 01_Application>fr.tsodev.assetmgmt</f61001_Application>    </entryItem>    <entryItem>        <f1_Request_ID>000000000010102</f1_Request_ID>        
+   data           : <f2_Submitter>Allen</f2_Submitter>        <f3_Create_Date>2018-08-19T10:12:28+00:00</f3_Create_Date>        <f4_Assigned_To/>        <f5_Last_Modifie
+   data           : d_By>Allen</f5_Last_Modified_By>        <f6_Modified_Date>2018-08-19T10:12:28+00:00</f6_Modified_Date>        <f7_Status>Active</f7_Status>        <f
+   data           : 8_Short_Description>Username</f8_Short_Description>        <f15_Status_History>2018-08-19T10:12:31+00:00Allen</f15_Status_History>        <f16_Notif
+   data           : ier_Listening>Not Listening</f16_Notifier_Listening>        <f112_Assignee_Group/>        <f160_Locale>en</f160_Locale>        <f17__SettingDisplayGU
+   data           : ID>AGGADG1AANVNMAP3P3OUP2S7OBNSOH</f17__SettingDisplayGUID>        <f37__Record_ID>AGGADG1AANVNMAP3P3OUP2S7OBNSOH</f37__Record_ID>        <f3200_Compo
+   data           : nent_Name>Remedy Server</f3200_Component_Name>        <f3204_Setting_Name>username</f3204_Setting_Name>        <f3260_FieldGrouping>General</f3260_Fie
+   data           : ldGrouping>        <f3266_SettingLabel>Username</f3266_SettingLabel>        <f3267_Setting_Description/>        <f60_8__ParentAssigneeGroup/>       
+   data           :  <f61001_Application>fr.tsodev.assetmgmt</f61001_Application>    </entryItem></entryList>
+end
+

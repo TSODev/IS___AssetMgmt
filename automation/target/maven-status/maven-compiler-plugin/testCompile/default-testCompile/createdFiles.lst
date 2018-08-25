@@ -1,0 +1,5 @@
+fr/tsodev/automation/steps/AutomationSuiteThenState.class
+fr/tsodev/automation/AutomationSuite.class
+fr/tsodev/automation/steps/AutomationSuiteWhenState.class
+fr/tsodev/automation/main/MainAutomationClass.class
+fr/tsodev/automation/steps/AutomationSuiteGivenState.class

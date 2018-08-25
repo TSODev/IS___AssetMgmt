@@ -1,0 +1,53 @@
+
+# compiled output
+/dist
+/dist-server
+/tmp
+/out-tsc
+
+#Automation ; Test ; Packaging
+#/automation
+#/package
+/test-output
+#/ui-automation
+
+# dependencies
+/node_modules
+/bundle/node_modules
+
+/bundle/grunt
+/bundle/target
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+*.zip

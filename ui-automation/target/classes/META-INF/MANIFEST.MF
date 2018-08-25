@@ -1,0 +1,162 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1535181827464
+Build-Jdk: 1.8.0_131
+Built-By: thierry
+Bundle-Activator: fr.tsodev.bundle.UIAutomation
+Bundle-ClassPath: .,testng-6.9.10.jar,hamcrest-core-1.3.jar,commons-lang
+ -2.6.jar,automation-framework-18.2.0-SNAPSHOT.jar,automation-framework-
+ ui-18.2.0-SNAPSHOT.jar,json-20090211.jar,jgiven-testng-0.14.0.jar,await
+ ility-2.0.0.jar,slf4j-log4j12-1.7.13.jar,jersey-media-multipart-2.13.ja
+ r,jackson-datatype-json-org-2.4.0.jar,plexus-utils-2.0.5.jar,jackson-mo
+ dule-jaxb-annotations-2.7.5.jar,jna-3.2.7.jar,selenium-java-3.4.0.jar,g
+ uava-21.0.jar,htmlelements-java-1.17.jar
+Bundle-Description: The Asset Management application UI Automation.
+Bundle-ManifestVersion: 2
+Bundle-Name: assetmgmt
+Bundle-SymbolicName: fr.tsodev.assetmgmt
+Bundle-Vendor: fr.tsodev
+Bundle-Version: 1.0.0.SNAPSHOT
+Class-Path: lib/testng-6.9.10.jar lib/jcommander-1.48.jar lib/bsh-2.0b4.
+ jar lib/hamcrest-core-1.3.jar lib/commons-lang-2.6.jar lib/automation-f
+ ramework-18.2.0-SNAPSHOT.jar lib/automation-framework-ui-18.2.0-SNAPSHO
+ T.jar lib/json-20090211.jar lib/jgiven-testng-0.14.0.jar lib/slf4j-api-
+ 1.7.21.jar lib/jgiven-core-0.14.0.jar lib/paranamer-2.8.jar lib/byte-bu
+ ddy-1.5.1.jar lib/jansi-1.13.jar lib/jgiven-html5-report-0.14.0.jar lib
+ /awaitility-2.0.0.jar lib/hamcrest-library-1.3.jar lib/cglib-nodep-3.1.
+ jar lib/objenesis-2.1.jar lib/slf4j-log4j12-1.7.13.jar lib/jersey-media
+ -multipart-2.13.jar lib/mimepull-1.9.3.jar lib/jackson-datatype-json-or
+ g-2.4.0.jar lib/json-20090211_1.jar lib/plexus-utils-2.0.5.jar lib/jack
+ son-module-jaxb-annotations-2.7.5.jar lib/jna-3.2.7.jar lib/selenium-ja
+ va-3.4.0.jar lib/selenium-api-3.4.0.jar lib/selenium-chrome-driver-3.4.
+ 0.jar lib/selenium-edge-driver-3.4.0.jar lib/selenium-firefox-driver-3.
+ 4.0.jar lib/selenium-ie-driver-3.4.0.jar lib/selenium-opera-driver-3.4.
+ 0.jar lib/selenium-remote-driver-3.4.0.jar lib/selenium-safari-driver-3
+ .4.0.jar lib/selenium-support-3.4.0.jar lib/commons-exec-1.3.jar lib/co
+ mmons-lang3-3.5.jar lib/commons-codec-1.10.jar lib/commons-io-2.5.jar l
+ ib/commons-logging-1.2.jar lib/sac-1.3.jar lib/cssparser-0.9.22.jar lib
+ /gson-2.8.0.jar lib/htmlunit-2.26.jar lib/htmlunit-core-js-2.26.jar lib
+ /neko-htmlunit-2.25.jar lib/httpclient-4.5.3.jar lib/httpcore-4.4.6.jar
+  lib/httpmime-4.5.3.jar lib/jetty-io-9.4.1.v20170120.jar lib/jetty-util
+ -9.4.1.v20170120.jar lib/jna-platform-4.1.0.jar lib/junit-4.12.jar lib/
+ phantomjsdriver-1.4.0.jar lib/htmlunit-driver-2.26.jar lib/javax.servle
+ t-api-3.1.0.jar lib/websocket-api-9.4.3.v20170317.jar lib/websocket-cli
+ ent-9.4.3.v20170317.jar lib/jetty-client-9.4.3.v20170317.jar lib/jetty-
+ http-9.4.3.v20170317.jar lib/websocket-common-9.4.3.v20170317.jar lib/s
+ erializer-2.7.2.jar lib/xalan-2.7.2.jar lib/xercesImpl-2.11.0.jar lib/x
+ ml-apis-1.4.01.jar lib/guava-21.0.jar lib/htmlelements-java-1.17.jar
+Created-By: Apache Maven Bundle Plugin
+Embed-Dependency: *;scope=compile|runtime
+Embedded-Artifacts: testng-6.9.10.jar;g="org.testng";a="testng";v="6.9.1
+ 0",hamcrest-core-1.3.jar;g="org.hamcrest";a="hamcrest-core";v="1.3",com
+ mons-lang-2.6.jar;g="commons-lang";a="commons-lang";v="2.6",automation-
+ framework-18.2.0-SNAPSHOT.jar;g="com.bmc.rx.test";a="automation-framewo
+ rk";v="18.2.0-SNAPSHOT",automation-framework-ui-18.2.0-SNAPSHOT.jar;g="
+ com.bmc.rx.test";a="automation-framework-ui";v="18.2.0-SNAPSHOT",json-2
+ 0090211.jar;g="org.json";a="json";v="20090211",jgiven-testng-0.14.0.jar
+ ;g="com.tngtech.jgiven";a="jgiven-testng";v="0.14.0",awaitility-2.0.0.j
+ ar;g="org.awaitility";a="awaitility";v="2.0.0",slf4j-log4j12-1.7.13.jar
+ ;g="org.slf4j";a="slf4j-log4j12";v="1.7.13",jersey-media-multipart-2.13
+ .jar;g="org.glassfish.jersey.media";a="jersey-media-multipart";v="2.13"
+ ,jackson-datatype-json-org-2.4.0.jar;g="com.fasterxml.jackson.datatype"
+ ;a="jackson-datatype-json-org";v="2.4.0",plexus-utils-2.0.5.jar;g="org.
+ codehaus.plexus";a="plexus-utils";v="2.0.5",jackson-module-jaxb-annotat
+ ions-2.7.5.jar;g="com.fasterxml.jackson.module";a="jackson-module-jaxb-
+ annotations";v="2.7.5",jna-3.2.7.jar;g="net.java.dev.jna";a="jna";v="3.
+ 2.7",selenium-java-3.4.0.jar;g="org.seleniumhq.selenium";a="selenium-ja
+ va";v="3.4.0",guava-21.0.jar;g="com.google.guava";a="guava";v="21.0",ht
+ mlelements-java-1.17.jar;g="ru.yandex.qatools.htmlelements";a="htmlelem
+ ents-java";v="1.17"
+Import-Package: com.bmc.arsys.rx.services;version="[1,999)",com.bmc.arsy
+ s.rx.services.association.domain;version="[1,999)",com.bmc.arsys.rx.ser
+ vices.bundle.domain;version="[1,999)",com.bmc.arsys.rx.services.common;
+ version="[1,999)",com.bmc.arsys.rx.services.internal;version="[1,999)",
+ com.bmc.arsys.rx.services.process.domain;version="[1,999)",com.bmc.arsy
+ s.rx.services.record.domain;version="[1,999)",bsh;resolution:=optional,
+ com.beust.jcommander;resolution:=optional;version="[1.48,2)",com.beust.
+ jcommander.converters;resolution:=optional;version="[1.48,2)",com.faste
+ rxml.jackson.annotation;resolution:=optional;version="[2.8,3)",com.fast
+ erxml.jackson.core;resolution:=optional;version="[2.8,3)",com.fasterxml
+ .jackson.core.util;resolution:=optional;version="[2.8,3)",com.fasterxml
+ .jackson.databind;resolution:=optional;version="[2.8,3)",com.fasterxml.
+ jackson.databind.cfg;resolution:=optional;version="[2.8,3)",com.fasterx
+ ml.jackson.databind.deser.std;resolution:=optional;version="[2.8,3)",co
+ m.fasterxml.jackson.databind.introspect;resolution:=optional;version="[
+ 2.8,3)",com.fasterxml.jackson.databind.jsonFormatVisitors;resolution:=o
+ ptional;version="[2.8,3)",com.fasterxml.jackson.databind.jsontype;resol
+ ution:=optional;version="[2.8,3)",com.fasterxml.jackson.databind.jsonty
+ pe.impl;resolution:=optional;version="[2.8,3)",com.fasterxml.jackson.da
+ tabind.module;resolution:=optional;version="[2.8,3)",com.fasterxml.jack
+ son.databind.node;resolution:=optional;version="[2.8,3)",com.fasterxml.
+ jackson.databind.ser.std;resolution:=optional;version="[2.8,3)",com.fas
+ terxml.jackson.databind.type;resolution:=optional;version="[2.8,3)",com
+ .fasterxml.jackson.databind.util;resolution:=optional;version="[2.8,3)"
+ ,com.fasterxml.jackson.jaxrs.base;resolution:=optional;version="[2.5,3)
+ ",com.fasterxml.jackson.jaxrs.json;resolution:=optional;version="[2.5,3
+ )",com.google.errorprone.annotations.concurrent;resolution:=optional,co
+ m.google.inject;resolution:=optional,com.jayway.awaitility;resolution:=
+ optional,com.jayway.awaitility.core;resolution:=optional,com.tngtech.jg
+ iven;resolution:=optional,com.tngtech.jgiven.annotation;resolution:=opt
+ ional,com.tngtech.jgiven.attachment;resolution:=optional,com.tngtech.jg
+ iven.base;resolution:=optional,com.tngtech.jgiven.impl;resolution:=opti
+ onal,com.tngtech.jgiven.impl.util;resolution:=optional,com.tngtech.jgiv
+ en.report.impl;resolution:=optional,com.tngtech.jgiven.report.model;res
+ olution:=optional,fr.tsodev.bundle;resolution:=optional,javax.activatio
+ n;resolution:=optional,javax.annotation;resolution:=optional;version="[
+ 1.2,2)",javax.crypto;resolution:=optional,javax.crypto.spec;resolution:
+ =optional,javax.inject;resolution:=optional;version="[1.0,2)",javax.net
+ .ssl;resolution:=optional,javax.ws.rs;resolution:=optional;version="[2.
+ 0,3)",javax.ws.rs.client;resolution:=optional;version="[2.0,3)",javax.w
+ s.rs.core;resolution:=optional;version="[2.0,3)",javax.ws.rs.ext;resolu
+ tion:=optional;version="[2.0,3)",javax.xml.bind;resolution:=optional,ja
+ vax.xml.bind.annotation;resolution:=optional,javax.xml.bind.annotation.
+ adapters;resolution:=optional,javax.xml.parsers;resolution:=optional,ja
+ vax.xml.xpath;resolution:=optional,junit.framework;resolution:=optional
+ ,net.sf.cglib.proxy;resolution:=optional,org.apache.commons.codec.binar
+ y;resolution:=optional;version="[1.10,2)",org.apache.commons.csv;resolu
+ tion:=optional,org.apache.commons.lang3;resolution:=optional;version="[
+ 3.5,4)",org.apache.commons.lang3.reflect;resolution:=optional;version="
+ [3.5,4)",org.apache.commons.lang3.text;resolution:=optional;version="[3
+ .5,4)",org.apache.log4j;resolution:=optional;version="[1.2,2)",org.apac
+ he.log4j.spi;resolution:=optional;version="[1.2,2)",org.apache.oltu.oau
+ th2.common.token;resolution:=optional,org.apache.tools.ant;resolution:=
+ optional,org.apache.tools.ant.taskdefs;resolution:=optional,org.apache.
+ tools.ant.types;resolution:=optional,org.apache.tools.ant.types.resourc
+ es;resolution:=optional,org.apache.tools.ant.types.selectors;resolution
+ :=optional,org.glassfish.hk2.api;resolution:=optional;version="[2.4,3)"
+ ,org.glassfish.hk2.utilities.binding;resolution:=optional;version="[2.4
+ ,3)",org.glassfish.jersey.internal.l10n;resolution:=optional;version="[
+ 2.22,3)",org.glassfish.jersey.internal.util;resolution:=optional;versio
+ n="[2.22,3)",org.glassfish.jersey.internal.util.collection;resolution:=
+ optional;version="[2.22,3)",org.glassfish.jersey.jackson;resolution:=op
+ tional;version="[2.22,3)",org.glassfish.jersey.message;resolution:=opti
+ onal;version="[2.22,3)",org.glassfish.jersey.message.internal;resolutio
+ n:=optional;version="[2.22,3)",org.glassfish.jersey.server;resolution:=
+ optional,org.glassfish.jersey.server.internal.inject;resolution:=option
+ al,org.glassfish.jersey.server.model;resolution:=optional,org.glassfish
+ .jersey.server.spi.internal;resolution:=optional,org.junit;resolution:=
+ optional,org.junit.runner;resolution:=optional,org.junit.runner.manipul
+ ation;resolution:=optional,org.junit.runner.notification;resolution:=op
+ tional,org.jvnet.mimepull;resolution:=optional;version="[1.9,2)",org.ob
+ jenesis;resolution:=optional;version="[2.1,3)",org.openqa.selenium;reso
+ lution:=optional,org.openqa.selenium.chrome;resolution:=optional,org.op
+ enqa.selenium.firefox;resolution:=optional,org.openqa.selenium.ie;resol
+ ution:=optional,org.openqa.selenium.interactions;resolution:=optional,o
+ rg.openqa.selenium.internal;resolution:=optional,org.openqa.selenium.re
+ mote;resolution:=optional,org.openqa.selenium.safari;resolution:=option
+ al,org.openqa.selenium.support;resolution:=optional,org.openqa.selenium
+ .support.events;resolution:=optional,org.openqa.selenium.support.pagefa
+ ctory;resolution:=optional,org.openqa.selenium.support.pagefactory.inte
+ rnal;resolution:=optional,org.openqa.selenium.support.ui;resolution:=op
+ tional,org.slf4j;resolution:=optional;version="[1.7,2)",org.slf4j.helpe
+ rs;resolution:=optional;version="[1.7,2)",org.slf4j.spi;resolution:=opt
+ ional;version="[1.7,2)",org.w3c.dom;resolution:=optional,org.xml.sax;re
+ solution:=optional,org.xml.sax.helpers;resolution:=optional,org.yaml.sn
+ akeyaml;resolution:=optional,org.yaml.snakeyaml.constructor;resolution:
+ =optional,org.yaml.snakeyaml.nodes;resolution:=optional,sun.misc;resolu
+ tion:=optional
+Main-Class: fr.tsodev.uiautomation.main.MainUIAutomationClass
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+RxBundle-DeveloperName: Thierry Soulie
+RxBundle-FriendlyName: Asset Management
+RxBundle-IsApplication: true
+Tool: Bnd-2.3.0.201405100607

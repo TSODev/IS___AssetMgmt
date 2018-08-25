@@ -1,0 +1,1 @@
+angular.module('fr.tsodev.assetmgmt-ext', []);

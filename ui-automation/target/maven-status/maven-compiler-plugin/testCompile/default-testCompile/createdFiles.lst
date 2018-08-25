@@ -1,0 +1,5 @@
+fr/tsodev/uiautomation/main/MainUIAutomationClass.class
+fr/tsodev/uiautomation/sample/steps/TestUIThenState.class
+fr/tsodev/uiautomation/sample/UIAutomationSuite.class
+fr/tsodev/uiautomation/sample/steps/TestUIGivenState.class
+fr/tsodev/uiautomation/sample/steps/TestUIWhenState.class

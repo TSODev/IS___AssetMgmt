@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]">
+  <test name="Surefire test">
+    <classes>
+      <class name="fr.tsodev.uiautomation.sample.steps.TestUIGivenState"/>
+      <class name="fr.tsodev.uiautomation.sample.steps.TestUIThenState"/>
+      <class name="fr.tsodev.uiautomation.sample.steps.TestUIWhenState"/>
+    </classes>
+  </test> <!-- Surefire test -->
+</suite> <!-- Failed suite [Surefire suite] -->
