@@ -4,7 +4,7 @@
  
     <groupId>fr.tsodev</groupId>
 	<artifactId>assetmgmt-all</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0</version>
     <packaging>pom</packaging>
 	
     <properties>
@@ -16,7 +16,7 @@
 	  <!-- END: Bundle specific configuration.-->
 		
 		<!-- The application will be visible with this name on innovation studio -->
-		<rx-sdk.bundleFriendlyName>Asset Management</rx-sdk.bundleFriendlyName>
+		<rx-sdk.bundleFriendlyName>Asset Management (POC)</rx-sdk.bundleFriendlyName>
 		
 		<!-- Comma Separated SchemaDataImportOrder like form1,form2 (fully qualified Form Name)-->
 		<rx-sdk.schemaDataImportOrder/>

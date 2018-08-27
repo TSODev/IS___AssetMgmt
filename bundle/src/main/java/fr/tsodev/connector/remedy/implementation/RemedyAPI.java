@@ -1,6 +1,7 @@
 package fr.tsodev.connector.remedy.implementation;
 
 import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -28,24 +29,33 @@ import fr.tsodev.bundle.Utils.DataREM.GenericContractRemedy;
 import fr.tsodev.bundle.Utils.DataREM.GenericContractRemedyResponse;
 import fr.tsodev.bundle.Utils.DataREM.InventoryLocationRemedy;
 import fr.tsodev.bundle.Utils.DataREM.InventoryLocationRemedyResponse;
+import fr.tsodev.integration.impl.AssetManagementException;
 import fr.tsodev.integration.impl.AssetManagementSettings;
+import fr.tsodev.integration.impl.AssetManagementException.AssetManagementMessage;
 
 public class  RemedyAPI {
 
-    private static String connect(String URL, String UserName, String Password){
+    public static String connect(String URL, String UserName, String Password){
 
         Form form = new Form();
             form.param("username", UserName);
             form.param("password", Password);
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(getBaseURI(URL));
-        String response = target
+        Response response = target
                                 .path("/api/jwt/login")
                                 .request()
                                 .accept(MediaType.TEXT_PLAIN)
-                                .post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED_TYPE), String.class);
+                                .post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED_TYPE), Response.class);
 
-        return response;
+		if (response.getStatus() == 200) {
+			return response.readEntity(String.class);
+		} else {
+//			throw (new RxServicesException(100001, "User Not Authenticated"));
+			throw (new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_AUTHENTICATION_ERROR," User Not Authenticated") );
+//			return null;
+		}
+
     }
 
     public static ProductCatalogRemedy createProductCatalogEntry(
@@ -57,23 +67,16 @@ public class  RemedyAPI {
                                                     String Cat3){
     	    
         String token = connect(AssetManagementSettings.getURL(), AssetManagementSettings.getUsername(), AssetManagementSettings.getPassword());
+
+
+			ProductCatalogRemedyResponse pcr = null;
+ 	    	ObjectMapper mapper = new ObjectMapper();
+        	mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         
-        ProductCatalogRemedyResponse pcr = null;
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        
-//    	String query = "'Product Categorization Tier 1'= \"" + Cat1 + "\" AND "
-//        		+ "'Product Categorization Tier 2'= \"" + Cat2 + "\" AND "
-//        		+ "'Product Categorization Tier 3'= \"" + Cat3 + "\" AND "
-//        		+ "'Product Name'= \"" + ProductName + "\" AND "
-//        		+ "'Manufacturer'= \"" + Manufacturer + "\" AND "
-//        		+ "'Asset Class'= \"" + AssetClass + "\" AND"
-//        		+ "'Product Type'= \"Configuration Item\"";
-        
-        // Product Name is unique .
-    	String query = "'Product Name'= \"" + ProductName + "\"";
+	        // Product Name is unique .
+	    	String query = "'Product Name'= \"" + ProductName + "\"";
       
-        String body = "{\"values\": "
+	        String body = "{\"values\": "
         		+ "{"
 	        		+ "\"Product Categorization Tier 1\": \"" + Cat1 + "\","
 	        		+ "\"Product Categorization Tier 2\": \"" + Cat2 + "\","
@@ -85,19 +88,19 @@ public class  RemedyAPI {
 	        		+ "}"
         		+ "}";
 
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
-        Response response = target
+	        Client client = ClientBuilder.newClient();
+	        WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
+	        Response response = target
                 .path("/api/arsys/v1/entry/PCT:Product%20Catalog")
                 .request()
                 .header(HttpHeaders.AUTHORIZATION, "AR-JWT " + token)
         		.post(Entity.json(body)); 
         
-        //Retrieve the record 
-        // Case 201 - Will read the new record
-        // Case 500 - Need to check if Error due to duplicate - Read the existing one
+	        //Retrieve the record 
+	        // Case 201 - Will read the new record
+	        // Case 500 - Need to check if Error due to duplicate - Read the existing one
         
-        if (response.getStatus() == 201 || response.getStatus() == 500) {
+	        if (response.getStatus() == 201 || response.getStatus() == 500) {
 		        
 		    	String res = target
 		    			.path("/api/arsys/v1/entry/PCT:Product%20Catalog")
@@ -117,11 +120,13 @@ public class  RemedyAPI {
 		    	
 		    	return pcr.getEntries(0).getValues();
 		    	
-        }
-        else
-        {
-        	return null;
-        }
+    	    }
+    	    else
+    	    {
+				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record"));
+//    	    	return null;
+    	    }
+
     }
 
     public static InventoryLocationRemedy createInventoryLocationEntry(
@@ -197,8 +202,9 @@ public class  RemedyAPI {
     		}
     		else
     		{
-    			String error = response.getEntity().toString();
-    			return null;
+    			String error = response.readEntity(String.class);
+				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
+//    			return null;
     		}
     }
 
@@ -258,8 +264,9 @@ public class  RemedyAPI {
     		}
     		else
     		{
-    			String error = response.getEntity().toString();
-    			return null;
+    			String error = response.readEntity(String.class);
+				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
+//    			return null;
     		}
     }
 
@@ -329,8 +336,9 @@ public class  RemedyAPI {
     		}
     		else
     		{
-    			String error = response.getEntity().toString();
-    			return null;
+    			String error = response.readEntity(String.class);
+				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
+//    			return null;
     		}
     }
 
@@ -355,9 +363,9 @@ public class  RemedyAPI {
 				+ "\"Parent_Relationship_Type\": \"Configuration Item\","
 				+ "\"Child_Form_Name\": \"CTR:GenericContract\","				
 				+ "\"Child_Instance_ID\": \"" + ContractID + "\","
-				+ "\"Child_Relation_Type\": \"Contract\","
+				+ "\"Child_Relationship_Type\": \"Contract\","
 				+ "\"Child_ID\": \"" + ContractID + "\","
-        		+ "\"Association Type01\": \"Related to\""  
+        		+ "\"Association Type01\": \"Related to\","  
         		+ "\"Short Description\": \"IS generated relationship\""  
 				+ "}"
 				+ "}";
@@ -436,8 +444,9 @@ public class  RemedyAPI {
     		}
     		else
     		{
-    			String error = response.getEntity().toString();
-    			return null;
+    			String error = response.readEntity(String.class);
+				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
+//    			return null;
     		}
     }
 
@@ -534,8 +543,9 @@ public class  RemedyAPI {
     		}
     		else
     		{
-    			String error = response.getEntity().toString();
-    			return null;
+    			String error = response.readEntity(String.class);
+				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
+//     			return null;
     		}
     }
 
@@ -597,8 +607,9 @@ public class  RemedyAPI {
 //    	}
 //    	else
 //    	{
-//    		String error = response.getEntity().toString();
-//    		return null;
+//	String error = response.readEntity(String.class);
+//	throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
+//     		return null;
 //    	}
     }
 

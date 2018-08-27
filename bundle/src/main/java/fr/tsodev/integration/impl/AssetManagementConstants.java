@@ -8,18 +8,15 @@ public class AssetManagementConstants {
     public static final String ASSETMANAGEMENT_ASSET_RECORD_NAME = "fr.tsodev.assetmgmt:Asset";
     public static final String ASSETMANAGEMENT_CONTRACT_RECORD_NAME = "fr.tsodev.assetmgmt:Contract";
     public static final String ASSETMANAGEMENT_PRODUCT_CATALOG_RECORD_NAME = "fr.tsodev.assetmgmt:Product Catalog";
+    public static final String ASSETMANAGEMENT_INVENTORY_LOCATION_RECORD_NAME = "fr.tsodev.assetmgmt:Inventory Location";
     
-    /**
-	 * Constants related to the Settings definition
-	 */
+
 	public final static String SETTINGS_ASSETMANAGEMENT_COMPONENT_REMEDYSERVER = "Remedy Server";
 	public final static String SETTINGS_ASSETMANAGEMENT_SETTING_URL = "url";
     public final static String SETTINGS_ASSETMANAGEMENT_SETTING_USERNAME = "username";
     public final static String SETTINGS_ASSETMANAGEMENT_SETTING_PASSWORD = "password";
     
-    /**
-     * Constant for Logger
-     */
+
     public final static String SETTINGS_ASSETMANAGEMENT_COMPONENT_LOGGER = "Logger Configuration";
     public final static String SETTINGS_ASSETMANAGEMENT_SETTING_FILENAME = "fileName";
     public final static String SETTINGS_ASSETMANAGEMENT_SETTING_LEVEL = "level";
@@ -73,7 +70,8 @@ public class AssetManagementConstants {
     public static final Integer ASSETMANAGEMENT_ASSET_TAG_NUMBER_FIELD_ID = 536870925;    
     public static final Integer ASSETMANAGEMENT_ASSET_EXTERNAL_INSTANCE_ID_FIELD_ID = 536870913;
     public static final Integer ASSETMANAGEMENT_ASSET_EXTERNAL_RECONCILIATION_ID_FIELD_ID = 536870926;    
-    
+
+    public static final Integer ASSETMANAGEMENT_CONTRACT_CONTRACT_ID_FIELD_ID = 1;
     public static final Integer ASSETMANAGEMENT_CONTRACT_DESCRIPTION_FIELD_ID = 8;
     public static final Integer ASSETMANAGEMENT_CONTRACT_NAME_FIELD_ID = 536870915;
     public static final Integer ASSETMANAGEMENT_CONTRACT_QUANTITY_FIELD_ID = 536870914;
@@ -88,4 +86,15 @@ public class AssetManagementConstants {
     public static final Integer ASSETMANAGEMENT_PRODUCT_CATALOG_ASSET_CLASS_FIELD_ID = 536870920;
     public static final Integer ASSETMANAGEMENT_PRODUCT_CATALOG_VENDOR_NAME_FIELD_ID = 536870921;
     public static final Integer ASSETMANAGEMENT_PRODUCT_CATALOG_EXTERNAL_INSTANCE_ID_FIELD_ID = 536870913;
+    
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_DESCRIPTION_FIELD_ID = 8;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_NAME_FIELD_ID = 536870914;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_COMPANY_FIELD_ID = 536870915;   
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_REGION_FIELD_ID = 536870916;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_SITE_FIELD_ID = 536870917;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_BUILDING_FIELD_ID = 536870918;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_ROOM_FIELD_ID = 536870920;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_FLOOR_FIELD_ID = 536870919;
+    public static final Integer ASSETMANAGEMENT_INVENTORY_LOCATION_EXTERNAL_INSTANCE_ID_FIELD_ID = 536870913;
+    
 }

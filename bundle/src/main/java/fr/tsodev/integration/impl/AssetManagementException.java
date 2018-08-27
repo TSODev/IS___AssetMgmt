@@ -26,7 +26,10 @@ public class AssetManagementException extends RxException {
 		ASSET_INVALID(600_113),
 		ASSET_CANT_MODIFY(600_114),
 		ASSET_CANT_READ_ASSOCIATION(600_115),
-		ASSET_CANT_CREATE(600_116);
+		ASSET_CANT_CREATE(600_116),
+
+		EXTERNAL_CONNECTION_AUTHENTICATION_ERROR(600_200),
+		EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD(600_201);
 		
 	    private final int intValue;
 	    
@@ -41,6 +44,14 @@ public class AssetManagementException extends RxException {
 
     public AssetManagementException(AssetManagementMessage errorMessage, String appendedText, RxException e) {
        super(errorMessage.intValue(), AssetManagementConstants.ASSETMANAGEMENT_PROGRAM_BUNDLE_ID, appendedText, e);
-    }
+	}
+ 
+	public AssetManagementException(AssetManagementMessage errorMessage, Exception e) {
+	   super(errorMessage.intValue(), AssetManagementConstants.ASSETMANAGEMENT_PROGRAM_BUNDLE_ID, e.getLocalizedMessage(), null);
+	}
+ 
+	public AssetManagementException(AssetManagementMessage errorMessage, String appendedText) {
+	   super(errorMessage.intValue(), AssetManagementConstants.ASSETMANAGEMENT_PROGRAM_BUNDLE_ID, appendedText, null);
 
+	}
 }

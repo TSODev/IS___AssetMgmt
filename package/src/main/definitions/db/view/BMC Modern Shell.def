@@ -1,7 +1,7 @@
 begin view definition
    name           : fr.tsodev.assetmgmt:BMC Modern Shell
    definition     : {
-   definition     :   "version" : "1.0-SNAPSHOT",
+   definition     :   "version" : "1.0.0",
    definition     :   "lastUpdateTime" : 1534691416092,
    definition     :   "lastChangedBy" : "ARSERVER",
    definition     :   "owner" : "ARSERVER",

@@ -20,10 +20,8 @@ import com.bmc.arsys.rx.services.record.domain.RecordInstance;
 import fr.tsodev.integration.impl.AssetManagementServiceImpl;
 import fr.tsodev.connector.remedy.implementation.*;
 import fr.tsodev.bundle.Utils.DataREM.ProductCatalogRemedy;
-import fr.tsodev.bundle.Utils.DataRX.AssetRecordInstance;
 import fr.tsodev.bundle.Utils.DataRX.ContractRecordInstance;
 import fr.tsodev.bundle.Utils.DataREM.ASTComputerSystemRemedy;
-import fr.tsodev.bundle.Utils.DataREM.ContractBaseRemedy;
 import fr.tsodev.bundle.Utils.DataREM.GenericContractRemedy;
 import fr.tsodev.bundle.Utils.DataREM.InventoryLocationRemedy;
 
@@ -32,93 +30,82 @@ import fr.tsodev.integration.impl.AssetManagementConstants;
 
 public class AssetManagementServiceImpl implements AssetManagementService {
 
+
+//========================================================================================
+	@Override
+	@Action(scope = Scope.PUBLIC)
+	public String getJWT(
+		@ActionParameter(name = "URL") @NotBlank String URL,
+		@ActionParameter(name = "Username") @NotBlank String Username,
+		@ActionParameter(name = "Password") @NotBlank String Password) {
+
+			String JWT = RemedyAPI.connect(URL, Username, Password);
+			return JWT;
+	}
+
+
 //	@Override
-//	@Action(scope= Scope.PUBLIC)
-//	public String connection(
-//		@ActionParameter(name = "Connection Name") @NotBlank String ConnectionName
-//	) {
-//		return null;
+//	@Action(scope = Scope.PUBLIC)
+//	public String createProductCatalogItem(
+//		@ActionParameter(name = "Asset Type") @NotBlank String AssetClass,
+//		@ActionParameter(name = "Product Name") @NotBlank String ProductName,
+//		@ActionParameter(name = "Manufacturer") @NotBlank String Manufacturer,
+//		@ActionParameter(name = "Categorization Tier 1") @NotBlank String Categorization1,
+//		@ActionParameter(name = "Categorization Tier 2") @NotBlank String Categorization2,
+//		@ActionParameter(name = "Categorization Tier 3") @NotBlank String Categorization3
+//		) {
+//		
+//	
+//		ProductCatalogRemedy CatalogItem = RemedyAPI.createProductCatalogEntry( 
+//															AssetClass, 
+//															ProductName, 
+//															Manufacturer, 
+//															Categorization1, 
+//															Categorization2, 
+//															Categorization3);
+//
+//		return CatalogItem.getInstanceId();
+//	}	
+
+//	@Override
+//	@Action(scope = Scope.PUBLIC)
+//	public String createInventoryLocation(
+//		@ActionParameter(name = "Name") @NotBlank String Name,
+//		@ActionParameter(name = "Company") @NotBlank String Company,
+//		@ActionParameter(name = "Region") @NotBlank String Region,
+//		@ActionParameter(name = "Site") @NotBlank String Site,
+//		@ActionParameter(name = "Building") @NotBlank String Building,
+//		@ActionParameter(name = "Room") String Room,
+//		@ActionParameter(name = "Floor") String Floor) {
+//
+//			InventoryLocationRemedy InventoryLocation = RemedyAPI.createInventoryLocationEntry(
+//					Name,
+//					Company,
+//					Region,
+//					Site,
+//					Building,
+//					Room,
+//					Floor
+//			);
+//			
+//		
+//		return InventoryLocation.getInstanceId();
 //	}
 
-	/* (non-Javadoc)
-	 * 
-	 */
-	@Override
-	@Action(scope = Scope.PUBLIC)
-	public String createProductCatalogItem(
-		@ActionParameter(name = "Asset Type") @NotBlank String AssetClass,
-		@ActionParameter(name = "Product Name") @NotBlank String ProductName,
-		@ActionParameter(name = "Manufacturer") @NotBlank String Manufacturer,
-		@ActionParameter(name = "Categorization Tier 1") @NotBlank String Categorization1,
-		@ActionParameter(name = "Categorization Tier 2") @NotBlank String Categorization2,
-		@ActionParameter(name = "Categorization Tier 3") @NotBlank String Categorization3
-		) {
-		
-	
-		ProductCatalogRemedy CatalogItem = RemedyAPI.createProductCatalogEntry( 
-															AssetClass, 
-															ProductName, 
-															Manufacturer, 
-															Categorization1, 
-															Categorization2, 
-															Categorization3);
-		
-		// Sync Instance ID in the RX Record
-		
-//		RecordService recordService = ServiceLocator.getRecordService();
-//		ServiceLocator.getLogger().info("Trying to access [MUSICBOX] Artist records with ServiceLocator");
-//		DataPageQueryParameters params = BuildParametersForArtist("'379'=" + '"' + ArtistRecordId + '"');
-//		DataPage result = recordService.getRecordInstancesByIdDataPage(params);
-//		List<?> records = result.getData();
-//		if (records.size() != 1) {
-//			return null;
-//		}
-//		// Should only find one , so we focus on records[0]
-//		String stringRecords = records.get(0).toString();
-//		return sanetize(stringRecords);
-
-		return CatalogItem.getInstanceId();
-	}	
-	
-	@Override
-	@Action(scope = Scope.PUBLIC)
-	public String createInventoryLocation(
-		@ActionParameter(name = "Name") @NotBlank String Name,
-		@ActionParameter(name = "Company") @NotBlank String Company,
-		@ActionParameter(name = "Region") @NotBlank String Region,
-		@ActionParameter(name = "Site") @NotBlank String Site,
-		@ActionParameter(name = "Building") @NotBlank String Building,
-		@ActionParameter(name = "Room") String Room,
-		@ActionParameter(name = "Floor") String Floor) {
-
-			InventoryLocationRemedy InventoryLocation = RemedyAPI.createInventoryLocationEntry(
-					Name,
-					Company,
-					Region,
-					Site,
-					Building,
-					Room,
-					Floor
-			);
-			
-		
-		return InventoryLocation.getInstanceId();
-	}
-
-	@Override
-	@Action(scope = Scope.PUBLIC)
-	public String createContractBase(
-		@ActionParameter(name = "ID") @NotBlank String ID,
-		@ActionParameter(name = "Description") @NotBlank String Description) {
-
-			ContractBaseRemedy ContractBase = RemedyAPI.createContractBaseEntry(
-					ID,
-					Description
-			);
-			
-		
-		return ContractBase.getInstanceId();
-	}
+//	@Override
+//	@Action(scope = Scope.PUBLIC)
+//	public String createContractBase(
+//		@ActionParameter(name = "ID") @NotBlank String ID,
+//		@ActionParameter(name = "Description") @NotBlank String Description) {
+//
+//			ContractBaseRemedy ContractBase = RemedyAPI.createContractBaseEntry(
+//					ID,
+//					Description
+//			);
+//			
+//		
+//		return ContractBase.getInstanceId();
+//	}
 
 //	@Override
 //	@Action(scope = Scope.PUBLIC)
@@ -173,6 +160,11 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 //		return Asset.getInstanceId();
 //	}	
 	
+	
+	
+// TODO : Add try-catch on retrieving recordInstance .
+
+//========================================================================================
 	@Override
 	@Action(scope= Scope.PUBLIC)
 	public String createExternalAsset(
@@ -205,7 +197,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		return RemedyAsset.getInstanceId();
 	}
 	
-	
+//========================================================================================	
 	@Override
 	@Action(scope = Scope.PUBLIC)
 	public String createExternalGenericContract(
@@ -215,8 +207,8 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		RecordInstance recordInstance = recordService.getRecordInstance(AssetManagementConstants.ASSETMANAGEMENT_CONTRACT_RECORD_NAME, recordID);
 		
 		GenericContractRemedy RemedyGenericContract = RemedyAPI.createGenericContractEntry(
-				recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_NAME_FIELD_ID), 
-				recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_DESCRIPTION_FIELD_ID)
+				recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_CONTRACT_CONTRACT_ID_FIELD_ID), 
+				recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_CONTRACT_NAME_FIELD_ID)
 											);
 				
 		recordInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_EXTERNAL_INSTANCE_ID_FIELD_ID, RemedyGenericContract.getInstanceId());
@@ -225,6 +217,8 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		
 		return RemedyGenericContract.getInstanceId();
 	}
+
+	//========================================================================================
 
 	@Override
 	@Action(scope = Scope.PUBLIC)
@@ -250,7 +244,34 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		return RemedyProductCatalog.getInstanceId();
 	}
 
+	//========================================================================================
 
+	@Override
+	@Action(scope = Scope.PUBLIC)
+	public String createExternalInventoryLocation(
+		@ActionParameter(name = "Inventory Location Record ID") @NotBlank  String recordID) {
+		
+		RecordService recordService = ServiceLocator.getRecordService();
+		RecordInstance recordInstance = recordService.getRecordInstance(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_RECORD_NAME, recordID);
+		
+		InventoryLocationRemedy RemedyInventoryLocation = RemedyAPI.createInventoryLocationEntry(
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_NAME_FIELD_ID), 
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_COMPANY_FIELD_ID), 
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_REGION_FIELD_ID), 
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_SITE_FIELD_ID), 
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_BUILDING_FIELD_ID), 
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_ROOM_FIELD_ID), 
+						recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_FLOOR_FIELD_ID));
+				
+		recordInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_INVENTORY_LOCATION_EXTERNAL_INSTANCE_ID_FIELD_ID, RemedyInventoryLocation.getInstanceId());
+		
+		recordService.updateRecordInstance(recordInstance);
+		
+		return RemedyInventoryLocation.getInstanceId();
+	}
+
+	
+	//========================================================================================
 	
 	@Override
 	@Action(scope = Scope.PUBLIC)
@@ -266,6 +287,8 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 	
 	private static final String CONTRACT_RECORDNAME = "fr.tsodev.assetmgmt:Contract";
 	private static final String ASSET_RECORDNAME = "fr.tsodev.assetmgmt:Asset";
+
+	//========================================================================================
 
 	@Override
 	@Action(scope = Scope.PUBLIC)
@@ -374,7 +397,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		    		recordService.createRecordInstance(recordInstance);		
 
 		    		AssociationService associationService = ServiceLocator.getAssociationService();
-		    		associationService.associate(AssetManagementConstants.ASSETMANAGEMENT_ASSETS_IN_CONTRACT_ASSOCIATION, recordInstance.getId(), contractInstance.getId());
+		    		associationService.associate(AssetManagementConstants.ASSETMANAGEMENT_ASSETS_IN_CONTRACT_ASSOCIATION, contractInstance.getId(), recordInstance.getId());
 		    	}
 		    	catch (RxException e) {
 		    		ServiceLocator.getLogger().error("Problem creating new Asset record ");
@@ -394,6 +417,8 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		
 		return result;
 	}
+
+	//========================================================================================
 
 	/**
 	 * Utility method to fetch one associated record. Particularly useful for the "1" in a "1:1" or "1:Many" association.
@@ -417,6 +442,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 	}
 	
 
+	//========================================================================================
 
 /**
  * Utility method just to make the code look cleaner. Does a query for associated records.
@@ -443,84 +469,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		return associationService.getAssociationInstancesByIdDataPage(params);		
 	}
 	
-	
-//	
-//	private String getContractByRecordId(String ContractId) {
-//		RecordService recordService = ServiceLocator.getRecordService();
-//		ServiceLocator.getLogger().info("Trying to access [ASSETMGMT] Contract records with ServiceLocator");
-//		DataPageQueryParameters params = BuildParametersForContract("'379'=" + '"' + ContractId + '"');
-//		DataPage result = recordService.getRecordInstancesByIdDataPage(params);
-//		List<?> records = result.getData();
-//		if (records.size() != 1) {
-//			return null;
-//		}
-//		// Should only find one , so we focus on records[0]
-//		String stringRecords = records.get(0).toString();
-//		return sanetize(stringRecords);
-//		
-//	}
-//	
-//
-//	private String sanetize(String s){
-//		return s.substring(1, s.length()-1);
-//	}		//remove enclosing { and } / don't know where they come from
-//
-//
-//	
-//	// Creating query parameters
-//	private DataPageQueryParameters BuildParametersForContract(String qualification) {
-//		Map<String, List<String>> dataPageParams = new HashMap<String, List<String>>();
-//		String myQualification = "";
-//
-//		int FIELD_NAME = 10377002;
-//
-//		// Type of datapage query to use
-//		dataPageParams.put("dataPageType", new ArrayList<String>(Arrays.asList(QUERY_TYPE_NAME)));
-//
-//		// How many data to retrieve?
-//		int nb_records = DataPage.INFINITE_PAGE_SIZE;
-//		dataPageParams.put("pageSize", new ArrayList<String>(Arrays.asList(Integer.toString(nb_records))));
-//
-//		// List of fields to get
-//		List<String> propertySelections = new ArrayList<String>();
-//		String guidFieldId = String.valueOf(RecordInstance.GUID_FIELD_ID);
-//		String RecordFieldId = String.valueOf(RecordInstance.RECORD_ID_FIELD_ID);
-//		String artistName = String.valueOf(FIELD_NAME);
-//		propertySelections.add(guidFieldId);
-//		propertySelections.add(RecordFieldId);
-//		propertySelections.add(artistName);
-////		propertySelections.add(TASK_AGENTS_LOGINID);
-//		dataPageParams.put("propertySelection", new ArrayList<String>(propertySelections));
-//
-//		// Which record definition to get?
-//		dataPageParams.put("recorddefinition", new ArrayList<String>(Arrays.asList(CONTRACT_RECORDNAME)));
-//
-//		// Where do we start?
-//		dataPageParams.put("startIndex", new ArrayList<String>(Arrays.asList("0")));
-//
-//		// Qualification, we search .... (see qualification paramter)
-//		myQualification = qualification;
-//		dataPageParams.put("queryExpression", new ArrayList<String>(Arrays.asList(myQualification)));
-//
-//		return new DataPageQueryParameters(dataPageParams);
-//
-//	}
-	
-	/**
-	 * Useful general utility for getting any shared setting value.
-	 * @param bundleId
-	 * @param componentName
-	 * @param settingName
-	 * @return
-	 */
-//	@Override
-//	@Action(scope = Scope.PUBLIC)	
-//	public String settingTextValue(
-//			@ActionParameter(name = "bundleId") @NotBlank String bundleId,
-//			@ActionParameter(name = "componentName") @NotBlank String componentName, 
-//			@ActionParameter(name = "settingName") @NotBlank String settingName) {	
-//		return MealOrderSettings.getStringValue(bundleId, componentName, settingName);
-//	}
+	//========================================================================================
 	
 	/**
 	 * Utility method to make the code look a bit cleaner. Gets the Service using the global Service Locator.
