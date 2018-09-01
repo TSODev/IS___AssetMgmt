@@ -33,9 +33,11 @@ import fr.tsodev.integration.impl.AssetManagementException;
 import fr.tsodev.integration.impl.AssetManagementSettings;
 import fr.tsodev.integration.impl.AssetManagementException.AssetManagementMessage;
 
+// ToDo : Important : Need to encode character before sending them to external system through Rest API.
+
 public class  RemedyAPI {
 
-    public static String connect(String URL, String UserName, String Password){
+    private static String connect(String URL, String UserName, String Password){
 
         Form form = new Form();
             form.param("username", UserName);
@@ -74,19 +76,35 @@ public class  RemedyAPI {
         	mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         
 	        // Product Name is unique .
-	    	String query = "'Product Name'= \"" + ProductName + "\"";
+	    	String query = new StringBuilder().append("'Product Name'= \"")
+					.append(ProductName)
+					.append("\"")
+					.toString();
       
-	        String body = "{\"values\": "
-        		+ "{"
-	        		+ "\"Product Categorization Tier 1\": \"" + Cat1 + "\","
-	        		+ "\"Product Categorization Tier 2\": \"" + Cat2 + "\","
-	        		+ "\"Product Categorization Tier 3\": \"" + Cat3 + "\","
-	        		+ "\"Product Name\": \"" + ProductName + "\","
-	        		+ "\"Manufacturer\": \"" + Manufacturer + "\","
-	        		+ "\"Asset Class\": \"" + AssetClass + "\","
-	        		+ "\"Product Type\": \"Configuration Item\""
-	        		+ "}"
-        		+ "}";
+	        String body = new StringBuilder().append("{\"values\": ")
+					.append("{")
+					.append("\"Product Categorization Tier 1\": \"")
+					.append(Cat1)
+					.append("\",")
+					.append("\"Product Categorization Tier 2\": \"")
+					.append(Cat2)
+					.append("\",")
+					.append("\"Product Categorization Tier 3\": \"")
+					.append(Cat3)
+					.append("\",")
+					.append("\"Product Name\": \"")
+					.append(ProductName)
+					.append("\",")
+					.append("\"Manufacturer\": \"")
+					.append(Manufacturer)
+					.append("\",")
+					.append("\"Asset Class\": \"")
+					.append(AssetClass)
+					.append("\",")
+					.append("\"Product Type\": \"Configuration Item\"")
+					.append("}")
+					.append("}")
+					.toString();
 
 	        Client client = ClientBuilder.newClient();
 	        WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
@@ -338,81 +356,46 @@ public class  RemedyAPI {
     		{
     			String error = response.readEntity(String.class);
 				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
-//    			return null;
+
     		}
     }
 
+ 
     
-    public static String relateAssetToContract(
-    													String ContractID,
-    													String AssetRecID) {
-    	
-		String token = connect(AssetManagementSettings.getURL(), AssetManagementSettings.getUsername(), AssetManagementSettings.getPassword());
-
-		String pcr = null;
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-//		String query = "'Name'= \"" + Name + "\" AND "
-//				+ "'Description'= \"" + Description + "\"";
-
-		String body = "{\"values\": "
-				+ "{"
-				+ "\"Parent_Form_Name\": \"AST:ComputerSystem\","
-				+ "\"Parent_Instance_ID\": \"" + AssetRecID + "\","
-				+ "\"Parent_Relationship_Type\": \"Configuration Item\","
-				+ "\"Child_Form_Name\": \"CTR:GenericContract\","				
-				+ "\"Child_Instance_ID\": \"" + ContractID + "\","
-				+ "\"Child_Relationship_Type\": \"Contract\","
-				+ "\"Child_ID\": \"" + ContractID + "\","
-        		+ "\"Association Type01\": \"Related to\","  
-        		+ "\"Short Description\": \"IS generated relationship\""  
-				+ "}"
-				+ "}";
-
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
-		Response response = target
-				.path("/api/arsys/v1/entry/CTR:Contract_Relationship")
-				.request()
-				.header(HttpHeaders.AUTHORIZATION, "AR-JWT " + token)
-				.post(Entity.json(body)); 
-
-    	if (response.getStatus() != 201) {
-    		return "Error : " + response;
-    	} else {
-    		return "OK";
-    	}
-    	
-    }
-    
-    
-    public static ASTComputerSystemRemedy createAsset(
-            												String Name,
-            												String Description){
+    public static GenericContractRemedy createMasterContractEntry(
+            String ID,
+            String Description){
 
     		String token = connect(AssetManagementSettings.getURL(), AssetManagementSettings.getUsername(), AssetManagementSettings.getPassword());
 
-    		ASTComputerSystemRemedyResponse pcr = null;
+    		GenericContractRemedyResponse pcr = null;
     		ObjectMapper mapper = new ObjectMapper();
     		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-    		String query = "'Name'= \"" + Name + "\" AND "
+    		String query = "'Contract ID+'= \"" + ID + "\" AND "
     				+ "'Description'= \"" + Description + "\"";
 
     		String body = "{\"values\": "
     				+ "{"
-    				+ "\"Name\": \"" + Name + "\","
-    				+ "\"Short Description\": \"" + Description + "\","
-    				+ "\"AssetLifecycleStatus\": \"Ordered\","
-	        		+ "\"Data Set Id\": \"BMC.ASSET\""   				
+    				+ "\"Contract ID+\": \"" + ID + "\","
+    				+ "\"Description\": \"" + Description + "\","
+    				+ "\"Company\": \"Calbro Services\","
+    	    		+ "\"Supplier Name+\": \"BMC\","
+    	    		+ "\"Assigned Support Company\": \"Calbro Services\","
+    	    		+ "\"Assigned Support Organization\": \"IT Support\","
+    	    		+ "\"Cost Center\": \"225276-B\","
+    	       		+ "\"Type\": \"Fixed\","
+    	    		+ "\"Expiration Date\": \"2020\","
+    	    		+ "\"Notification Date\": \"2020\","
+    	    		+ "\"Notification Group+\": \"Asset Management\""
     				+ "}"
     				+ "}";
-
+    		
+    		
     		Client client = ClientBuilder.newClient();
     		WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
     		Response response = target
-    				.path("/api/arsys/v1/entry/AST:ComputerSystem")
+    				.path("/api/arsys/v1/entry/CTR:MasterContract")
     				.request()
     				.header(HttpHeaders.AUTHORIZATION, "AR-JWT " + token)
     				.post(Entity.json(body)); 
@@ -424,7 +407,7 @@ public class  RemedyAPI {
     		if (response.getStatus() == 201 || response.getStatus() == 204) {
 
     			String res = target
-    					.path("/api/arsys/v1/entry/AST:ComputerSystem")
+    					.path("/api/arsys/v1/entry/CTR:MasterContract")
     					.queryParam("q", query)
     					.request()
     					.header(HttpHeaders.AUTHORIZATION, "AR-JWT " + token)
@@ -432,7 +415,7 @@ public class  RemedyAPI {
     					.get(String.class);
 
     			try{
-    				pcr = mapper.readValue(res, ASTComputerSystemRemedyResponse.class);
+    				pcr = mapper.readValue(res, GenericContractRemedyResponse.class);
 
     			}
     			catch (JsonParseException e) { e.printStackTrace();}
@@ -446,10 +429,51 @@ public class  RemedyAPI {
     		{
     			String error = response.readEntity(String.class);
 				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
-//    			return null;
     		}
     }
 
+
+    
+    public static String relateAssetToContract(
+    													String ContractID,
+    													String AssetRecID) {
+    	
+		String token = connect(AssetManagementSettings.getURL(), AssetManagementSettings.getUsername(), AssetManagementSettings.getPassword());
+
+		String pcr = null;
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+		String body = "{\"values\": "
+				+ "{"
+				+ "\"Parent_Form_Name\": \"AST:ComputerSystem\","
+				+ "\"Parent_Instance_ID\": \"" + AssetRecID + "\","
+				+ "\"Parent_Relationship_Type\": \"Contract\","
+				+ "\"Child_Form_Name\": \"CTR:MasterContract\","				
+				+ "\"Child_Instance_ID\": \"" + ContractID + "\","
+				+ "\"Child_Relationship_Type\": \"Contract\","
+				+ "\"Child_ID\": \"" + ContractID + "\","
+        		+ "\"Association Type01\": \"Attached to\","  
+        		+ "\"Short Description\": \"IS generated relationship\""  
+				+ "}"
+				+ "}";
+
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
+		Response response = target
+				.path("/api/arsys/v1/entry/CTR:Contract_Relationship")
+				.request()
+				.header(HttpHeaders.AUTHORIZATION, "AR-JWT " + token)
+				.post(Entity.json(body)); 
+
+    	if (response.getStatus() != 201) {
+    		return "Error : " + response.getEntity();
+    	} else {
+    		return "OK";
+    	}
+    	
+    }
+    
 
     public static ASTComputerSystemRemedy createAsset(
             												String Name,
@@ -474,18 +498,6 @@ public class  RemedyAPI {
     		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     		String query = "'Name'= \"" + Name + "\"";
-//    				+ "'Description'= \"" + Description + "\""
-//    				+ "'Category'= \"" + Category + "\" AND "
-//    				+ "'Type'= \"" + Type + "\" AND "
-//    				+ "'Item'= \"" + Item + "\" AND "
-////    				+ "'Manufacturer Name'= \"" + Manufacturer + "\" AND "    
-////    				+ "'Model Number'= \"" + Model + "\" AND "
-//    				+ "'Region'= \"" + Region + "\" AND "
-//    				+ "'Site'= \"" + Site + "\" AND "
-//    				+ "'Building'= \"" + Building + "\" AND "
-//    				+ "'Room'= \"" + Room + "\" AND "
-//    				+ "'Tag Number'= \"" + TagNumber + "\" AND "
-//					+ "'Floor'= \"" + Floor + "\"";
 
     		String body = "{\"values\": "
     				+ "{"
@@ -545,7 +557,6 @@ public class  RemedyAPI {
     		{
     			String error = response.readEntity(String.class);
 				throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
-//     			return null;
     		}
     }
 
@@ -563,28 +574,8 @@ public class  RemedyAPI {
     	String query = "'Name'= \"" + Name + "\" AND "
     			+ "'Short Description'= \"" + Description + "\"";
 
-//    	String body = "{\"values\": "
-//    			+ "{"
-//    			+ "\"Name\": \"" + Name + "\","
-//    			+ "\"Short Description\": \"" + Description + "\","
-//    			+ "\"AssetLifecycleStatus\": \"Ordered\","
-//    			+ "\"Data Set Id\": \"BMC.ASSET\""   				
-//    			+ "}"
-//    			+ "}";
-//
     	Client client = ClientBuilder.newClient();
     	WebTarget target = client.target(getBaseURI(AssetManagementSettings.getURL()));
-//    	Response response = target
-//    			.path("/api/arsys/v1/entry/AST:ComputerSystem")
-//    			.request()
-//    			.header(HttpHeaders.AUTHORIZATION, "AR-JWT " + token)
-//    			.post(Entity.json(body)); 
-//
-//    	//Retrieve the record 
-//    	// Case 201 - Will read the new record
-//    	// Case 500 - Need to check if Error due to duplicate - Read the existing one
-//
-//    	if (response.getStatus() == 201 || response.getStatus() == 204) {
 
     		String res = target
     				.path("/api/arsys/v1/entry/AST:ComputerSystem")
@@ -604,13 +595,6 @@ public class  RemedyAPI {
 
     		return pcr.getEntries(0).getValues();
 
-//    	}
-//    	else
-//    	{
-//	String error = response.readEntity(String.class);
-//	throw( new AssetManagementException(AssetManagementMessage.EXTERNAL_CONNECTION_CANNOT_RETRIEVE_RECORD, "Error retrieving external record" + error));
-//     		return null;
-//    	}
     }
 
 

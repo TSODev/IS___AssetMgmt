@@ -12,9 +12,9 @@ public interface AssetManagementService extends Service {
      * 
      */
 
-    public String getJWT(@NotBlank String URL,
-                            @NotBlank String Username,
-                            @NotBlank String Password);
+//    public String getJWT(@NotBlank String URL,
+//                            @NotBlank String Username,
+//                            @NotBlank String Password);
                             
 //    public String createProductCatalogItem(
 //                                            @NotBlank String AssetClass,
@@ -66,8 +66,7 @@ public interface AssetManagementService extends Service {
 											@NotBlank String Description);
     
     public String processContractSpecifications(
-    										@NotBlank String ContractId,
-    										@NotBlank String AssetBaseName);
+    										@NotBlank String ContractId);
     
     public String createExternalAsset(
     										@NotBlank String AssetID
@@ -84,6 +83,8 @@ public interface AssetManagementService extends Service {
     public String createExternalInventoryLocation(
     										@NotBlank String InventoryLocationID
     										);
+    
+    public String getExternalBaseUrl();
     
 //    public String createAssetItem(@NotBlank String Class,
 //    								@NotBlank String ProductId);
