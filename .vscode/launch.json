@@ -16,7 +16,7 @@
         },
         {
             "type": "java",
-            "name": "Debug (Attach)",
+            "name": "Debug (InnoVM)",
             "request": "attach",
             "hostName": "192.168.0.87",
             "port": "32773"

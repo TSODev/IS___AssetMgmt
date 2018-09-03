@@ -6,6 +6,9 @@
         'ui.router',
         // all modules that provide non-abstract navigation routes
         'fr.tsodev.assetmgmt.home',
-        'fr.tsodev.assetmgmt-ext'
+        'fr.tsodev.assetmgmt-ext',
+        //Actions
+        //View-Components
+        'fr.tsodev.assetmgmt.view-components.custom-label'
     ]);
 })();

@@ -210,7 +210,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 				recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_CONTRACT_CONTRACT_ID_FIELD_ID), 
 				recordInstance.getFieldValue(AssetManagementConstants.ASSETMANAGEMENT_CONTRACT_NAME_FIELD_ID)
 											);
-				
+
 		recordInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_EXTERNAL_INSTANCE_ID_FIELD_ID, RemedyGenericContract.getInstanceId());
 		recordInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_CONTRACT_EXTERNAL_URL_FIELD_ID, AssetManagementSettings.getURL());
 		recordService.updateRecordInstance(recordInstance);

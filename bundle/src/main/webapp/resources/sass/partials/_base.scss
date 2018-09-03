@@ -13,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   min-width: 1200px;
   overflow-y: hidden;
+  font-family: "Helvetica Neue";
 }
 
 [ui-view=content] {
@@ -49,3 +50,18 @@ a {
     text-decoration: none;
   }
 }
+
+.Title
+{
+	background-color: #C3DDFF;
+	border: 3px solid #052787;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.Content
+{
+	background-color: #E2E7F4;
+}
+
