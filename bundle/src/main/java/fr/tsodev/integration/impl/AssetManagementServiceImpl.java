@@ -359,7 +359,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		    
 		    ASTComputerSystemRemedy ExternalAsset = RemedyAPI.createAsset(
 		    		name, 
-		    		name, 
+		    		Model, 
 		    		Cat1, 
 		    		Cat2, 
 		    		Cat3, 
@@ -382,7 +382,7 @@ public class AssetManagementServiceImpl implements AssetManagementService {
 		    	assetInstance.setRecordDefinitionName(recordDefinitionName);
 
 		    	assetInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_NAME_FIELD_ID, name);
-		    	assetInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_DESCRIPTION_FIELD_ID, name);
+		    	assetInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_DESCRIPTION_FIELD_ID, Model);
 		    	assetInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_CATEGORY_FIELD_ID, Cat1);
 		    	assetInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_TYPE_FIELD_ID, Cat2);
 		    	assetInstance.setFieldValue(AssetManagementConstants.ASSETMANAGEMENT_ASSET_ITEM_FIELD_ID, Cat3);

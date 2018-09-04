@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1535993175257
+Bnd-LastModified: 1536063238932
 Build-Jdk: 1.8.0_131
 Built-By: thierry
 Bundle-Activator: fr.tsodev.bundle.Automation

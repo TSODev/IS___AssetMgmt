@@ -12,8 +12,8 @@
             "livereload-port": 39005,
             "skip-tests": true,
             "skip-validation": true,
-            "api-host": "localhost",
-            "api-port": 8008,
+            "api-host": "192.168.0.87",
+            "api-port": 8081,
 			"api-https": false,
             "host": "localhost",
             "port": 9005
@@ -26,6 +26,7 @@
 
             "app": {
                 "scripts": [
+                    "lib/jsBarcode_3.11/JsBarcode.all.min",
                     "scripts/**/*.global",
                     "scripts/**/*.module",
                     "scripts/**/*.config",
@@ -53,6 +54,7 @@
 
             "ext": {
                 "scripts": [
+                    "lib/jsBarcode_3.11/JsBarcode.all.min",
                     "scripts/view-components/**/*.global",
                     "scripts/view-components/**/*.module",
                     "scripts/view-components/**/*.config",
