@@ -16,6 +16,8 @@
                     var init = function () {
                         _config = $scope.rxConfiguration.propertiesByName;
 
+                        // See : https://github.com/lindell/JsBarcode
+
                         $scope.barcode = JsBarcode("#barcode", _config.tag , {
                             format: "CODE128",
                             lineColor: "#00",
